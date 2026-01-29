@@ -1,31 +1,30 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
-
 export const suggestReply = async (feedbackContent: string, department: string): Promise<string> => {
   try {
+    // Khởi tạo instance mới mỗi lần gọi để đảm bảo lấy đúng API_KEY từ môi trường Vercel/Vite
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+    
+    if (!process.env.API_KEY) {
+      console.warn("Cảnh báo: Thiếu API_KEY cho Gemini.");
+      return "Cảm ơn quý khách đã gửi phản ánh về " + department + ". Chúng tôi chân thành ghi nhận và sẽ phản hồi trong thời gian sớm nhất.";
+    }
+
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: `Bạn là một quản lý chăm sóc khách hàng tại Bệnh viện Đa khoa Ninh Thuận. 
-      Hãy viết một câu trả lời chuyên nghiệp, thấu cảm và lịch sự cho phản ánh sau đây từ bệnh nhân. 
-      Phản ánh thuộc khoa: ${department}.
-      Nội dung phản ánh: "${feedbackContent}".
-      Câu trả lời cần:
-      1. Cảm ơn vì sự góp ý.
-      2. Xin lỗi nếu có trải nghiệm không tốt.
-      3. Khẳng định bệnh viện sẽ xác minh và chấn chỉnh (nếu cần).
-      4. Giữ phong thái y đức và chuyên nghiệp.
-      Trả lời bằng tiếng Việt.`,
+      contents: `Bạn là quản lý chất lượng chuyên nghiệp tại Bệnh viện Đa khoa Ninh Thuận. 
+      Viết phản hồi cho bệnh nhân tại khoa: ${department}.
+      Nội dung họ phản ánh: "${feedbackContent}".
+      Yêu cầu: Lịch sự, thấu cảm, cam kết chấn chỉnh. Trả lời bằng tiếng Việt.`,
       config: {
         temperature: 0.7,
-        topP: 0.8,
       }
     });
 
-    return response.text || "Xin cảm ơn quý khách đã gửi phản ánh. Chúng tôi đã tiếp nhận thông tin và sẽ sớm phản hồi.";
+    return response.text || "Chúng tôi đã tiếp nhận phản ánh của quý khách và đang xử lý.";
   } catch (error) {
-    console.error("Gemini suggestion error:", error);
-    return "Chúng tôi chân thành cảm ơn ý kiến đóng góp của quý khách. Bệnh viện đã ghi nhận phản ánh tại khoa " + department + " và đang tiến hành kiểm tra làm rõ.";
+    console.error("Gemini Error:", error);
+    return "Bệnh viện Đa khoa Ninh Thuận chân thành cảm ơn ý kiến của quý khách. Chúng tôi sẽ làm việc với khoa " + department + " để nâng cao chất lượng dịch vụ.";
   }
 };
