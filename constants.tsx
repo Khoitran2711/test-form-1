@@ -19,7 +19,7 @@ export const HOSPITAL_NAME = "BỆNH VIỆN ĐA KHOA NINH THUẬN";
 export const Icons = {
  LOGO_ICON: (
   <img 
-    src="images/logo.png" 
+    src="images/logo.png.png" 
     alt="Logo Bệnh viện" 
     style={{ width: '24px', height: '24px', objectFit: 'contain' }} 
   />
