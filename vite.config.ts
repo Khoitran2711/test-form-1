@@ -4,13 +4,17 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  // 'base' giúp các file script/css tìm đúng đường dẫn khi deploy lên github.io/repo-name/
-  base: './',
+  base: './', // Rất quan trọng cho GitHub Pages
   define: {
-    'process.env': process.env
+    // Đảm bảo process.env tồn tại trong trình duyệt để Gemini SDK hoạt động
+    'process.env': {
+      API_KEY: JSON.stringify(process.env.API_KEY || "")
+    }
   },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'esbuild'
   }
 });
