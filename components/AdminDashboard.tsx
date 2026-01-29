@@ -51,13 +51,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ feedbacks, onUpd
           </div>
           <div>
             <h1 className="font-extrabold text-lg tracking-tight leading-none mb-1">{HOSPITAL_NAME}</h1>
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Hệ thống Điều hành & Quản trị chất lượng</p>
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Hệ thống Điều hành & Quản trị chất lượng Bệnh viện Đa khoa Ninh Thuận</p>
           </div>
         </div>
         <div className="flex items-center gap-8">
           <div className="text-right hidden sm:block">
-            <p className="text-xs font-bold">BS. Admin</p>
-            <p className="text-[10px] text-slate-400 font-bold uppercase">Quản lý trực ban</p>
+            <p className="text-xs font-bold">Admin</p>
+            <p className="text-[10px] text-slate-400 font-bold uppercase">Quản lý Hệ thống</p>
           </div>
           <button onClick={onLogout} className="px-5 py-2.5 bg-slate-50 hover:bg-red-50 hover:text-red-600 text-xs font-bold rounded-xl transition-all border border-slate-100 uppercase tracking-widest">Đăng xuất</button>
         </div>
