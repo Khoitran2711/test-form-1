@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Icons, HOSPITAL_NAME, DEPARTMENTS } from '../constants';
-import { Feedback, FeedbackStatus } from '../types';
+import { Feedback } from '../types';
 
 interface PublicFeedbackProps {
   onSubmit: (feedback: Omit<Feedback, 'id' | 'status' | 'createdAt'>) => void;
@@ -22,16 +22,9 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length > 0) {
-      if (files.length + images.length > 2) {
-        alert('Chỉ được chọn tối đa 2 ảnh!');
-        return;
-      }
-      
       Array.from(files).forEach(file => {
         const reader = new FileReader();
-        reader.onloadend = () => {
-          setImages(prev => [...prev, reader.result as string]);
-        };
+        reader.onloadend = () => setImages(prev => [...prev, reader.result as string].slice(0, 2));
         reader.readAsDataURL(file);
       });
     }
@@ -39,181 +32,101 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({
-      ...formData,
-      images
-    });
+    onSubmit({ ...formData, images });
     setSubmitted(true);
-    // Reset form after 5s or scrolling back
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        fullName: '',
-        phoneNumber: '',
-        department: '',
-        date: new Date().toISOString().split('T')[0],
-        time: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', hour12: false }),
-        content: '',
-      });
-      setImages([]);
-    }, 5000);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (submitted) {
     return (
-      <div className="max-w-2xl mx-auto my-12 p-12 bg-white rounded-3xl shadow-2xl text-center border border-green-100">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
+      <div className="max-w-xl mx-auto my-20 p-10 bg-white rounded-[32px] shadow-2xl shadow-blue-100/50 text-center border border-blue-50">
+        <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-8 text-emerald-500 animate-bounce">
           <Icons.CheckCircle />
         </div>
-        <h2 className="text-3xl font-bold text-slate-800 mb-4">Gửi phản ánh thành công!</h2>
-        <p className="text-slate-600 mb-8 text-lg">
-          Cảm ơn quý khách đã tin tưởng và góp ý. Chúng tôi sẽ xem xét và phản hồi trong thời gian sớm nhất.
+        <h2 className="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Tiếp nhận thành công!</h2>
+        <p className="text-slate-500 mb-10 leading-relaxed font-medium">
+          Cảm ơn sự đóng góp của bạn. Ý kiến đã được chuyển đến Ban Giám đốc {HOSPITAL_NAME} để xác minh và xử lý.
         </p>
         <button 
           onClick={() => setSubmitted(false)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-blue-200"
         >
-          Quay lại trang chủ
+          Gửi thêm ý kiến khác
         </button>
       </div>
     );
   }
 
   return (
-    <div className="max-w-3xl mx-auto my-8 bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
-      {/* Visual Header */}
-      <div className="bg-slate-900 px-8 py-10 text-center relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
-        <div className="relative z-10">
-          <div className="inline-flex items-center justify-center bg-white w-14 h-14 rounded-2xl shadow-lg mb-6 text-blue-600">
-            <Icons.Stethoscope />
+    <div className="max-w-4xl mx-auto my-12 bg-white rounded-[40px] shadow-2xl shadow-slate-200/60 overflow-hidden border border-slate-100">
+      <div className="flex flex-col md:flex-row">
+        {/* Sidebar info */}
+        <div className="md:w-1/3 bg-blue-600 p-10 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="relative z-10">
+            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-8 backdrop-blur-md">
+              <Icons.Stethoscope />
+            </div>
+            <h3 className="text-2xl font-bold leading-tight mb-4">Chúng tôi luôn lắng nghe quý khách</h3>
+            <p className="text-blue-100 text-sm font-medium leading-relaxed opacity-80">
+              Mọi ý kiến đóng góp là động lực để Bệnh viện Đa khoa Ninh Thuận nâng cao chất lượng phục vụ nhân dân.
+            </p>
           </div>
-          <h1 className="text-white text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight">
-            Phản ánh chất lượng dịch vụ
-          </h1>
-          <p className="text-slate-400 mt-3 font-medium text-lg uppercase tracking-widest text-sm">
-            {HOSPITAL_NAME}
-          </p>
+          <div className="mt-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">
+            Hệ thống bảo mật & Chính danh
+          </div>
         </div>
+
+        {/* Form area */}
+        <form onSubmit={handleSubmit} className="md:w-2/3 p-10 md:p-14 space-y-8 bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Họ tên bệnh nhân</label>
+              <input required className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none" placeholder="Ví dụ: Nguyễn Văn A" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Số điện thoại</label>
+              <input className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none" placeholder="09xx xxx xxx" value={formData.phoneNumber} onChange={e => setFormData({...formData, phoneNumber: e.target.value})} />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Khoa / Phòng liên quan</label>
+            <select required className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none appearance-none" value={formData.department} onChange={e => setFormData({...formData, department: e.target.value})}>
+              <option value="">-- Chọn khoa --</option>
+              {DEPARTMENTS.map(dept => <option key={dept} value={dept}>{dept}</option>)}
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Nội dung phản ánh</label>
+            <textarea required className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none min-h-[150px] resize-none" placeholder="Quý khách vui lòng mô tả chi tiết sự việc..." value={formData.content} onChange={e => setFormData({...formData, content: e.target.value})} />
+          </div>
+
+          <div className="space-y-4">
+             <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Hình ảnh đính kèm (Nếu có)</label>
+             <div className="flex flex-wrap gap-4">
+               {images.map((img, i) => (
+                 <div key={i} className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-white shadow-md">
+                   <img src={img} className="w-full h-full object-cover" />
+                   <button type="button" onClick={() => setImages(images.filter((_, idx) => idx !== i))} className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px]">×</button>
+                 </div>
+               ))}
+               {images.length < 2 && (
+                 <label className="w-20 h-20 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 flex items-center justify-center cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-all text-slate-400">
+                    <Icons.ClipboardList />
+                    <input type="file" hidden accept="image/*" onChange={handleFileChange} />
+                 </label>
+               )}
+             </div>
+          </div>
+
+          <button type="submit" className="w-full bg-slate-900 hover:bg-black text-white font-black py-5 px-8 rounded-[24px] shadow-2xl transition-all flex items-center justify-center gap-3 group">
+            <span>GỬI PHẢN ÁNH CHÍNH THỨC</span>
+            <Icons.Send />
+          </button>
+        </form>
       </div>
-
-      <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Họ và tên <span className="text-red-500">*</span></label>
-            <input 
-              required
-              className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
-              placeholder="Nhập họ và tên đầy đủ"
-              value={formData.fullName}
-              onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-            />
-          </div>
-          
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Số điện thoại</label>
-            <input 
-              type="tel"
-              className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
-              placeholder="Nhập số điện thoại (tùy chọn)"
-              value={formData.phoneNumber}
-              onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
-            />
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Khoa điều trị <span className="text-red-500">*</span></label>
-          <select 
-            required
-            className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all appearance-none"
-            value={formData.department}
-            onChange={(e) => setFormData({...formData, department: e.target.value})}
-          >
-            <option value="">-- Chọn khoa --</option>
-            {DEPARTMENTS.map(dept => <option key={dept} value={dept}>{dept}</option>)}
-          </select>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Ngày phản ánh <span className="text-red-500">*</span></label>
-            <input 
-              required
-              type="date"
-              className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
-              value={formData.date}
-              onChange={(e) => setFormData({...formData, date: e.target.value})}
-            />
-          </div>
-          
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Giờ phản ánh <span className="text-red-500">*</span></label>
-            <input 
-              required
-              type="time"
-              className="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all"
-              value={formData.time}
-              onChange={(e) => setFormData({...formData, time: e.target.value})}
-            />
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Nội dung phản ánh <span className="text-red-500">*</span></label>
-          <textarea 
-            required
-            className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all min-h-[160px] resize-none"
-            placeholder="Mô tả chi tiết sự việc, thái độ phục vụ hoặc vấn đề bạn gặp phải..."
-            value={formData.content}
-            onChange={(e) => setFormData({...formData, content: e.target.value})}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Hình ảnh minh chứng (Tối đa 2 ảnh)</label>
-          <div className="mt-2 flex flex-col items-center justify-center p-8 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl hover:border-blue-400 hover:bg-blue-50 transition-all cursor-pointer relative">
-            <input 
-              type="file" 
-              accept="image/*"
-              multiple
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              onChange={handleFileChange}
-            />
-            <div className="text-center">
-              <div className="bg-white w-12 h-12 rounded-full shadow-sm flex items-center justify-center mx-auto mb-3 text-slate-400">
-                <Icons.ClipboardList />
-              </div>
-              <p className="text-slate-600 font-medium">Kéo thả hoặc nhấn để chọn ảnh</p>
-              <p className="text-slate-400 text-xs mt-1">Hỗ trợ JPG, PNG (Dưới 5MB)</p>
-            </div>
-          </div>
-          {images.length > 0 && (
-            <div className="flex gap-4 mt-4">
-              {images.map((img, idx) => (
-                <div key={idx} className="relative group w-20 h-20">
-                  <img src={img} className="w-full h-full object-cover rounded-lg border border-slate-200" alt="Evidence" />
-                  <button 
-                    type="button"
-                    onClick={() => setImages(images.filter((_, i) => i !== idx))}
-                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <button 
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 px-8 rounded-2xl shadow-xl shadow-blue-200 transform hover:-translate-y-1 transition-all flex items-center justify-center gap-3 text-lg"
-        >
-          <Icons.Send />
-          GỬI PHẢN ÁNH CHÍNH THỨC
-        </button>
-      </form>
     </div>
   );
 };
