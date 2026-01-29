@@ -17,9 +17,13 @@ export const DEPARTMENTS = [
 export const HOSPITAL_NAME = "BỆNH VIỆN ĐA KHOA NINH THUẬN";
 
 export const Icons = {
-  Hospital: () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/><path d="M10 9h4"/><path d="M12 7v4"/></svg>
-  ),
+ LOGO_ICON: (
+  <img 
+    src="images/logo.png" 
+    alt="Logo Bệnh viện" 
+    style={{ width: '24px', height: '24px', objectFit: 'contain' }} 
+  />
+),
   Stethoscope: () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2a.3.3 0 1 0-.2.3Z"/><path d="M3.3 7a4.95 4.95 0 0 1 .1-5"/><path d="M15 8h2a5 5 0 0 1 5 5v2a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3h-2v10a4 4 0 0 1-8 0V4"/><path d="M2 14h4a2 2 0 1 1 0 4H2a2 2 0 1 1 0-4Z"/></svg>
   ),
