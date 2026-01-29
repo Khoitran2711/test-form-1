@@ -69,7 +69,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
             </div>
             <h3 className="text-2xl font-bold leading-tight mb-4">Chúng tôi luôn lắng nghe quý khách</h3>
             <p className="text-blue-100 text-sm font-medium leading-relaxed opacity-80">
-              Mọi ý kiến đóng góp là động lực để Bệnh viện Đa khoa Ninh Thuận ngày càng nâng cao chất lượng phục vụ nhân dân.
+              Mọi ý kiến đóng góp là động lực để Bệnh viện Đa khoa Ninh Thuận ngày càng nâng cao chất lượng phục vụ bệnh nhân.
             </p>
           </div>
           <div className="mt-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">
@@ -91,7 +91,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Khoa / Phòng đóng góp ý kiến</label>
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Khoa / Phòng Bạn muốn đóng góp ý kiến</label>
             <select required className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none appearance-none" value={formData.department} onChange={e => setFormData({...formData, department: e.target.value})}>
               <option value="">-- Chọn khoa --</option>
               {DEPARTMENTS.map(dept => <option key={dept} value={dept}>{dept}</option>)}
