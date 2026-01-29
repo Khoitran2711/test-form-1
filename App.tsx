@@ -60,7 +60,7 @@ const App: React.FC = () => {
           <span className="hidden md:inline">Hotline 24/7: 1900 9095</span>
         </div>
         <button onClick={() => setIsAdminMode(true)} className="hover:text-white transition-colors flex items-center gap-2">
-          <Icons.User /> Cổng Cán Bộ
+          <Icons.User /> Trang Quản Trị
         </button>
       </div>
 
@@ -87,7 +87,7 @@ const App: React.FC = () => {
             Góp ý của bạn là <br/><span className="text-blue-600">tài sản của chúng tôi</span>
           </h2>
           <p className="text-lg text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto">
-            Ban Giám đốc luôn trân trọng mọi ý kiến đóng góp chân thành để cải thiện quy trình khám chữa bệnh tại tỉnh nhà Ninh Thuận.
+            Ban Giám đốc luôn trân trọng mọi ý kiến đóng góp chân thành để cải thiện quy trình khám chữa bệnh tại Bệnh viện Đa khoa Ninh Thuận.
           </p>
         </section>
 
@@ -109,12 +109,12 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="bg-white/5 p-10 rounded-[32px] border border-white/5 text-center flex flex-col justify-center">
-            <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Đường dây nóng phản ánh</h4>
+            <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Đường dây nóng ghi nhận ý kiến</h4>
             <p className="text-5xl font-black text-white tracking-tighter tabular-nums leading-none">1900 9095</p>
           </div>
         </div>
         <div className="max-w-7xl mx-auto pt-10 text-[9px] font-bold uppercase tracking-[0.4em] text-center">
-          © 2024 Ninh Thuan General Hospital. All rights reserved.
+          © 2013 Ninh Thuan General Hospital. All rights reserved.
         </div>
       </footer>
     </div>
