@@ -60,11 +60,11 @@ const App: React.FC = () => {
           <span className="hidden md:inline">Hotline 24/7: 1900 9095</span>
         </div>
         <button onClick={() => setIsAdminMode(true)} className="hover:text-white transition-colors flex items-center gap-2">
-          <Icons.User /> Trang Quản Trị
+          <Icons.User /> Trang Quản Trị Hệ thống
         </button>
       </div>
 
-      <nav className="bg-white/80 backdrop-blur-xl border-b border-slate-100 sticky top-0 z-40 py-6">
+      <nav className="bg-transparent backdrop-blur-xl border-b border-slate-100 sticky top-0 z-40 py-6">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
            <div className="flex flex-col items-center gap-4">
               <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-200">
@@ -86,9 +86,9 @@ const App: React.FC = () => {
           <h2 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tighter mb-8 leading-none">
             Góp ý của bạn là <br/><span className="text-blue-600">tài sản của chúng tôi</span>
           </h2>
-          <p className="text-lg text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto">
-            Ban Giám đốc luôn trân trọng mọi ý kiến đóng góp chân thành để cải thiện quy trình khám chữa bệnh tại Bệnh viện Đa khoa Ninh Thuận.
-          </p>
+         <p className="text-lg text-blue-600 font-medium leading-relaxed max-w-2xl mx-auto">
+    Ban Giám đốc luôn trân trọng mọi ý kiến đóng góp chân thành để cải thiện quy trình khám chữa bệnh tại Bệnh viện Đa khoa Ninh Thuận.
+</p>
         </section>
 
         <div className="pb-32 px-6">
