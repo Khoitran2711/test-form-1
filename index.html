@@ -8,11 +8,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-    /* Chỉnh 0.95 để nền trắng hơn/mờ hơn, chỉnh 0.5 để nền rõ hơn */
-    background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1)), 
-                url('images/bg.png');
-    background-size: cover;
+       body {
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                      url('images/bg.png');
+    /* Ép ảnh vừa khít mọi chiều */
+    background-size: 100% 100%; 
+    background-attachment: fixed;
 }
         #root {
             min-height: 100vh;
