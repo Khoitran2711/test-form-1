@@ -86,7 +86,7 @@ const App: React.FC = () => {
             </div>
             <div className="text-center">
               <h1 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight uppercase leading-none">{HOSPITAL_NAME}</h1>
-              <p className="text-[9px] text-blue-700 font-extrabold uppercase tracking-[0.5em] mt-3 italic bg-white/50 px-4 py-1 rounded-full backdrop-blur-sm inline-block">Chất lượng - Tận tâm - Chuyên nghiệp</p>
+              <p className="text-blue-600 font-extrabold tracking-tight uppercase text-xs md:text-sm mt-3 opacity-90">Chất lượng - Tận tâm - Chuyên nghiệp</p>
             </div>
           </div>
 
