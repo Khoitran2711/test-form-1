@@ -57,7 +57,7 @@ const App: React.FC = () => {
         <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white/10 backdrop-blur-md p-8 rounded-[40px] shadow-2xl border border-white/10">
           <div className="w-20 h-20 md:w-24 md:h-24 bg-blue-600 rounded-3xl flex items-center justify-center text-white shadow-xl p-3 shrink-0">
             <img src="images/logo.png" alt="Logo" className="w-full h-full object-contain" />
-            <Icons.Hospital />
+  
           </div>
           <div className="flex flex-col text-center md:text-left">
             <h1 className="text-2xl md:text-4xl font-black text-blue-900 tracking-tighter leading-none uppercase drop-shadow-sm">
