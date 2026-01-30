@@ -80,11 +80,11 @@ const App: React.FC = () => {
       <div className="fixed inset-0 -z-50 overflow-hidden">
         <img 
           src="images/bg.png" 
-          alt="Background" 
+          alt="" 
           className="w-full h-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000';
+            target.src = "images/bg.png" ;
           }}
         />
         <div className="absolute inset-0 bg-white/80 backdrop-blur-[1px]"></div>
