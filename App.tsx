@@ -1,15 +1,19 @@
 
 import React, { useState, useEffect } from 'react';
 import { PublicFeedback } from './components/PublicFeedback';
+import { FeedbackLookup } from './components/FeedbackLookup';
 import { AdminLogin } from './components/AdminLogin';
 import { AdminDashboard } from './components/AdminDashboard';
 import { Feedback, FeedbackStatus, User } from './types';
 import { HOSPITAL_NAME, Icons } from './constants';
 
+type PublicView = 'SUBMIT' | 'LOOKUP';
+
 const App: React.FC = () => {
   const [user, setUser] = useState<User>({ role: 'PUBLIC' });
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
   const [isAdminMode, setIsAdminMode] = useState(false);
+  const [publicView, setPublicView] = useState<PublicView>('SUBMIT');
 
   useEffect(() => {
     try {
@@ -44,6 +48,7 @@ const App: React.FC = () => {
   const handleLogout = () => {
     setUser({ role: 'PUBLIC' });
     setIsAdminMode(false);
+    setPublicView('SUBMIT');
   };
 
   const renderContent = () => {
@@ -53,22 +58,10 @@ const App: React.FC = () => {
     }
     return (
       <div className="flex flex-col items-center w-full max-w-6xl mx-auto px-4 py-8 relative z-10">
-        {/* Header - Độ trong suốt 10% để thấy background rõ nét */}
-        <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white/10 backdrop-blur-none p-8 rounded-[40px] shadow-2xl border border-white/20">
-          <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-3xl flex items-center justify-center shadow-xl p-3 shrink-0 overflow-hidden">
-            {/* Sửa lại thẻ img Logo để tránh lỗi không hiện */}
-            <img 
-              src="images/logo.png" 
-              alt="Logo" 
-              className="w-full h-full object-contain" 
-            onError={(e) => {
-    const target = e.target as HTMLImageElement;
-    // Cách an toàn: Ẩn ảnh đi nếu lỗi thay vì cố nạp lại
-    target.style.display = 'none'; 
-    console.error("Lỗi: Không tìm thấy file bg.png");
-                }
-              }}
-            />
+        {/* Header - Glassmorphism style */}
+        <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-8 bg-white/40 backdrop-blur-md p-8 rounded-[40px] shadow-2xl border border-white/50">
+          <div className="w-20 h-20 md:w-24 md:h-24 bg-blue-600 rounded-3xl flex items-center justify-center text-white shadow-xl p-3 shrink-0">
+            <Icons.Hospital />
           </div>
           <div className="flex flex-col text-center md:text-left">
             <h1 className="text-2xl md:text-4xl font-black text-blue-900 tracking-tighter leading-none uppercase drop-shadow-sm">
@@ -81,33 +74,82 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <PublicFeedback onSubmit={handlePublicSubmit} />
+        {/* Public View Navigation Toggle */}
+        <div className="flex p-1.5 bg-white/30 backdrop-blur-lg rounded-3xl border border-white/50 mb-10 shadow-lg">
+          <button 
+            onClick={() => setPublicView('SUBMIT')}
+            className={`px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${
+              publicView === 'SUBMIT' 
+              ? 'bg-blue-600 text-white shadow-lg' 
+              : 'text-slate-600 hover:bg-white/40'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Icons.ClipboardList /> Gửi phản ánh
+            </div>
+          </button>
+          <button 
+            onClick={() => setPublicView('LOOKUP')}
+            className={`px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${
+              publicView === 'LOOKUP' 
+              ? 'bg-blue-600 text-white shadow-lg' 
+              : 'text-slate-600 hover:bg-white/40'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Icons.Search /> Tra cứu kết quả
+            </div>
+          </button>
+        </div>
+
+        {publicView === 'SUBMIT' ? (
+          <PublicFeedback onSubmit={handlePublicSubmit} />
+        ) : (
+          <FeedbackLookup feedbacks={feedbacks} />
+        )}
       </div>
     );
   };
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      {/* Background Image - ĐÃ SỬA LỖI VÒNG LẶP GÂY TẢI TRANG */}
+      {/* Background Image */}
       <div className="fixed inset-0 -z-50 overflow-hidden">
-       <img 
-  src="images/bg.png" 
-  alt="" 
-  className="w-full h-full object-cover"
-  onError={(e) => {
-    const target = e.target as HTMLImageElement;
-    // Cách an toàn: Ẩn ảnh đi nếu lỗi thay vì cố nạp lại
-    target.style.display = 'none'; 
-    console.error("Lỗi: Không tìm thấy file bg.png");
-  }}
-/>
-        {/* Lớp phủ mỏng 20% và không blur để ảnh cực rõ */}
-        <div className="absolute inset-0 bg-white/20 backdrop-blur-none"></div>
+        <img 
+          src="images/bg.png" 
+          alt="Background" 
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000';
+          }}
+        />
+        <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]"></div>
       </div>
 
       {/* Top Bar Navigation */}
       <nav className="bg-blue-900/90 backdrop-blur-md text-white px-6 py-4 flex justify-between items-center shadow-lg z-50 sticky top-0">
-        {/* ... (phần nav giữ nguyên) */}
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-white rounded-lg p-1">
+            <Icons.Hospital />
+          </div>
+          <span className="font-bold text-xs md:text-sm tracking-wide uppercase">Cổng thông tin y tế</span>
+        </div>
+        {!isAdminMode ? (
+          <button 
+            onClick={() => setIsAdminMode(true)} 
+            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all border border-white/20"
+          >
+            <Icons.User /> Quản trị viên
+          </button>
+        ) : (
+          <button 
+            onClick={handleLogout} 
+            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-all shadow-lg"
+          >
+            Đăng xuất
+          </button>
+        )}
       </nav>
 
       {renderContent()}
