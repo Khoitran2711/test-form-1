@@ -54,20 +54,21 @@ const App: React.FC = () => {
     return (
       <div className="flex flex-col items-center w-full max-w-6xl mx-auto px-4 py-8">
         {/* Header - Quay lại giao diện cũ với logo trong khối xanh */}
-        <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white/90 p-8 rounded-[30px] shadow-lg border border-blue-100">
-          <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-600 rounded-[20px] flex items-center justify-center text-white shadow-xl p-2 shrink-0">
-            <Icons.Hospital />
-          </div>
-          <div className="flex flex-col text-center md:text-left">
-            <h1 className="text-xl md:text-3xl font-extrabold text-blue-900 tracking-tight leading-none uppercase">
-              {HOSPITAL_NAME}
-            </h1>
-            <div className="h-1 w-24 bg-blue-600 my-2 rounded-full mx-auto md:mx-0"></div>
-            <p className="text-blue-600 font-bold uppercase tracking-widest text-[10px] md:text-xs">
-              Hệ thống tiếp nhận phản ánh & góp ý trực tuyến
-            </p>
-          </div>
-        </div>
+       <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white p-8 rounded-[30px] shadow-lg border border-blue-100 backdrop-blur-none">
+  <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-600 rounded-[20px] flex items-center justify-center text-white shadow-xl p-2 shrink-0">
+    {/* Thay đổi Icons.Hospital thành img nếu bạn muốn dùng logo thật như các bước trước */}
+    <img src="images/logo.png" alt="Logo" className="w-full h-full object-contain" />
+  </div>
+  <div className="flex flex-col text-center md:text-left">
+    <h1 className="text-xl md:text-3xl font-extrabold text-blue-900 tracking-tight leading-none uppercase">
+      {HOSPITAL_NAME}
+    </h1>
+    <div className="h-1 w-24 bg-blue-600 my-2 rounded-full mx-auto md:mx-0"></div>
+    <p className="text-blue-600 font-bold uppercase tracking-widest text-[10px] md:text-xs">
+      Hệ thống tiếp nhận phản ánh & góp ý trực tuyến
+    </p>
+  </div>
+</div>
 
         <PublicFeedback onSubmit={handlePublicSubmit} />
       </div>
