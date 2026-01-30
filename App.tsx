@@ -98,8 +98,8 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-2 md:mt-4 space-y-2 md:space-y-4">
-            <h2 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tighter leading-[1.2] md:leading-[1.1] drop-shadow-sm">
+          <div className="mt-20 md:mt-40 space-y-3 md:space-y-6">
+            <h2 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tighter leading-[1.2] md:leading-[1.1] drop-shadow-sm">
               Góp ý của bạn <br/>
               <span className="text-blue-600">Tài sản của chúng tôi</span>
             </h2>
