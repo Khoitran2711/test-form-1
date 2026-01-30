@@ -54,7 +54,7 @@ const App: React.FC = () => {
     return (
       <div className="flex flex-col items-center w-full max-w-6xl mx-auto px-4 py-8 relative z-10">
         {/* Header - Tăng độ trong suốt để thấy background */}
-        <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white/40 backdrop-blur-md p-8 rounded-[40px] shadow-2xl border border-white/50">
+        <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white/20 backdrop-blur-md p-8 rounded-[40px] shadow-2xl border border-white/20">
           <div className="w-20 h-20 md:w-24 md:h-24 bg-blue-600 rounded-3xl flex items-center justify-center text-white shadow-xl p-3 shrink-0">
             <Icons.Hospital />
           </div>
