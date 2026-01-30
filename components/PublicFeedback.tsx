@@ -39,7 +39,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
 
   if (submitted) {
     return (
-      <div className="max-w-xl mx-auto my-20 p-10 bg-white rounded-[32px] shadow-2xl shadow-blue-100/50 text-center border border-blue-50">
+      <div className="max-w-xl mx-auto my-10 p-10 bg-white rounded-[32px] shadow-2xl shadow-blue-100/50 text-center border border-blue-50">
         <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-8 text-emerald-500 animate-bounce">
           <Icons.CheckCircle />
         </div>
@@ -58,7 +58,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto my-12 bg-white rounded-[40px] shadow-2xl shadow-slate-200/60 overflow-hidden border border-slate-100">
+    <div className="max-w-4xl mx-auto mb-12 bg-white rounded-[40px] shadow-2xl shadow-slate-200/60 overflow-hidden border border-slate-100">
       <div className="flex flex-col md:flex-row">
         {/* Sidebar info */}
         <div className="md:w-1/3 bg-blue-600 p-10 text-white flex flex-col justify-between relative overflow-hidden">
@@ -69,11 +69,11 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
             </div>
             <h3 className="text-2xl font-bold leading-tight mb-4">Chúng tôi luôn lắng nghe quý khách</h3>
             <p className="text-blue-100 text-sm font-medium leading-relaxed opacity-80">
-              Mọi ý kiến đóng góp là động lực để Bệnh viện Đa khoa Ninh Thuận ngày càng nâng cao chất lượng phục vụ bệnh nhân.
+              Mọi ý kiến đóng góp là động lực để Bệnh viện Đa khoa Ninh Thuận nâng cao chất lượng phục vụ nhân dân.
             </p>
           </div>
           <div className="mt-12 text-[10px] font-bold uppercase tracking-[0.2em] opacity-60">
-            Hệ thống bảo mật & Ẩn danh
+            Hệ thống bảo mật & Chính danh
           </div>
         </div>
 
@@ -81,7 +81,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
         <form onSubmit={handleSubmit} className="md:w-2/3 p-10 md:p-14 space-y-8 bg-white">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Họ và Tên </label>
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Họ tên bệnh nhân</label>
               <input required className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none" placeholder="Ví dụ: Nguyễn Văn A" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
             </div>
             <div className="space-y-2">
@@ -91,7 +91,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Khoa / Phòng Bạn muốn đóng góp ý kiến</label>
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Khoa / Phòng liên quan</label>
             <select required className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none appearance-none" value={formData.department} onChange={e => setFormData({...formData, department: e.target.value})}>
               <option value="">-- Chọn khoa --</option>
               {DEPARTMENTS.map(dept => <option key={dept} value={dept}>{dept}</option>)}
@@ -99,7 +99,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Nội dung ý kiến</label>
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Nội dung phản ánh</label>
             <textarea required className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all font-semibold outline-none min-h-[150px] resize-none" placeholder="Quý khách vui lòng mô tả chi tiết sự việc..." value={formData.content} onChange={e => setFormData({...formData, content: e.target.value})} />
           </div>
 
@@ -122,7 +122,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
           </div>
 
           <button type="submit" className="w-full bg-slate-900 hover:bg-black text-white font-black py-5 px-8 rounded-[24px] shadow-2xl transition-all flex items-center justify-center gap-3 group">
-            <span>GỬI Ý KIẾN CỦA BẠN</span>
+            <span>GỬI PHẢN ÁNH CHÍNH THỨC</span>
             <Icons.Send />
           </button>
         </form>
