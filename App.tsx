@@ -54,38 +54,31 @@ const App: React.FC = () => {
     }
     return (
       <>
-        {/* Banner Header */}
+        {/* Banner Header - Cực kỳ trong suốt */}
         <header className="relative w-full pt-6 pb-4 md:pt-10 md:pb-6 px-4 md:px-8 flex flex-col items-center justify-center z-20">
-          <div className="max-w-6xl w-full bg-white/10 backdrop-blur-none rounded-[32px] md:rounded-[48px] p-6 md:p-10 border border-white/50 shadow-2xl shadow-blue-900/5">
+          <div className="max-w-6xl w-full bg-white/10 backdrop-blur-2xl rounded-[32px] md:rounded-[48px] p-6 md:p-10 border border-white/30 shadow-2xl shadow-blue-900/10">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
               <div className="flex flex-col items-center text-center space-y-3 shrink-0">
-               <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-[20px] flex items-center justify-center shadow-xl overflow-hidden p-1">
-          <img 
-            src="images/logo.png" 
-            alt="Logo Bệnh viện" 
-            className="w-full h-full object-contain"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = "images/logo.png"; // Ảnh dự phòng nếu lỗi đường dẫn
-            }}
-          />
-        </div>
+                {/* Logo container - Trong suốt để lộ logo.png */}
+                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center drop-shadow-md">
+                  <Icons.Hospital />
+                </div>
                 <div className="space-y-1">
                   <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight">
                     {HOSPITAL_NAME}
                   </h1>
-                  <p className="text-blue-600 font-bold tracking-[0.15em] uppercase text-[9px] md:text-[10px]">
+                  <p className="text-blue-600 font-black tracking-[0.15em] uppercase text-[9px] md:text-[10px]">
                     Chất lượng - Tận tâm - Chuyên nghiệp
                   </p>
                 </div>
               </div>
-              <div className="hidden lg:block w-[1px] h-20 bg-slate-300/40 rounded-full"></div>
+              <div className="hidden lg:block w-[1px] h-20 bg-slate-900/10 rounded-full"></div>
               <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-2 lg:max-w-[55%]">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
                   Lắng nghe để thấu hiểu – <br className="hidden md:block lg:hidden" />
                   <span className="text-blue-600">Góp ý để hoàn thiện</span>
                 </h2>
-                <p className="text-[10px] md:text-xs text-slate-500 font-semibold uppercase tracking-wide opacity-80">
+                <p className="text-[10px] md:text-xs text-slate-600 font-bold uppercase tracking-wide">
                   Mỗi ý kiến giúp chúng tôi nâng cao chất lượng dịch vụ y tế cho cộng đồng
                 </p>
               </div>
@@ -105,12 +98,12 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-transparent">
-      {/* Background Toàn Trang - Đặt ở lớp dưới cùng */}
+      {/* Background Toàn Trang */}
       <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
         <img 
-          src="images/bg.png" 
+          src="images/bg.png.png" 
           alt="" 
-          className="w-full h-full object-cover transition-opacity duration-1000 opacity-100"
+          className="w-full h-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             if (target.src.includes('.png.png')) {
@@ -118,7 +111,7 @@ const App: React.FC = () => {
             }
           }}
         />
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
       </div>
 
       {/* Top Bar */}
@@ -142,16 +135,16 @@ const App: React.FC = () => {
         )}
       </div>
 
-      {/* Nội dung thay đổi theo Mode */}
       {renderContent()}
 
-      {/* Footer chỉ hiện ở trang Public để giảm rối cho Admin Dashboard */}
       {!isAdminMode && (
-        <footer className="bg-slate-900 text-white/40 py-12 px-6 md:px-12 relative z-40">
+        <footer className="bg-slate-900/90 backdrop-blur-md text-white/40 py-12 px-6 md:px-12 relative z-40">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 border-b border-white/5 pb-12">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="flex items-center gap-3 mb-6">
-                 <div className="p-2 bg-blue-600 rounded-xl text-white shadow-lg"><Icons.Hospital /></div>
+              <div className="flex items-center gap-4 mb-6">
+                 <div className="w-12 h-12 flex items-center justify-center bg-white/10 rounded-xl p-1 shadow-lg">
+                    <Icons.Hospital />
+                 </div>
                  <h3 className="text-sm md:text-base font-extrabold text-white uppercase tracking-tight">{HOSPITAL_NAME}</h3>
               </div>
               <div className="space-y-2 text-[11px] font-medium opacity-60">
@@ -173,4 +166,5 @@ const App: React.FC = () => {
   );
 };
 
+// Add default export to fix error in index.tsx
 export default App;
