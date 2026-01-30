@@ -52,82 +52,92 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col relative">
-      {/* Background Toàn Trang - Đã sửa đường dẫn và tăng độ rõ */}
+    <div className="min-h-screen flex flex-col relative bg-transparent">
+      {/* Background Toàn Trang - Fix lỗi zoom trên mobile */}
       <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-10"></div>
-        <div 
-          className="w-full h-full bg-[url('images/bg.png')] bg-cover bg-center bg-fixed opacity-40 transform scale-105"
-          style={{ transition: 'opacity 1.5s ease-in-out' }}
-        ></div>
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] z-10"></div>
+        <img 
+          src="images/bg.png" 
+          alt="background"
+          className="w-full h-full object-cover opacity-50"
+        />
       </div>
 
-      {/* Top Bar */}
-      <div className="bg-slate-900/95 text-white/50 text-[9px] font-black tracking-[0.3em] px-8 py-3 flex justify-between items-center uppercase z-50 shadow-lg">
-        <div className="flex items-center gap-6">
-          <span className="flex items-center gap-2">
+      {/* Top Bar - Tối ưu cho màn hình nhỏ */}
+      <div className="bg-slate-900/95 text-white/50 text-[8px] md:text-[9px] font-black tracking-[0.2em] md:tracking-[0.3em] px-4 md:px-8 py-3 flex justify-between items-center uppercase z-50 shadow-lg">
+        <div className="flex items-center gap-3 md:gap-6">
+          <span className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> 
-            Hệ thống đang hoạt động
+            <span className="hidden xs:inline">Hệ thống hoạt động</span>
+            <span className="xs:hidden">Live</span>
           </span>
-          <span className="hidden md:inline">Hotline 24/7: 0259 3831 799</span>
+          <span className="hidden sm:inline">Hotline: 1900 9095</span>
         </div>
         <button onClick={() => setIsAdminMode(true)} className="hover:text-white transition-colors flex items-center gap-2 group">
           <Icons.User /> 
-          <span className="group-hover:translate-x-0.5 transition-transform uppercase">Trang Quản Trị Hệ thống</span>
+          <span className="group-hover:translate-x-0.5 transition-transform uppercase">Quản trị</span>
         </button>
       </div>
 
-      {/* Banner Header */}
-      <header className="relative w-full pt-20 pb-16 px-6 flex flex-col items-center justify-center z-20">
-        <div className="max-w-7xl w-full flex flex-col items-center gap-8 text-center">
+      {/* Banner Header - Font size linh hoạt cho mobile */}
+      <header className="relative w-full pt-12 pb-8 md:pt-20 md:pb-16 px-4 md:px-6 flex flex-col items-center justify-center z-20">
+        <div className="max-w-7xl w-full flex flex-col items-center gap-6 md:gap-8 text-center">
           <div className="flex flex-col items-center gap-4">
-            <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-2xl shadow-blue-500/30 transform hover:rotate-6 transition-transform">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-2xl shadow-blue-500/30 transform hover:scale-105 transition-transform">
               <Icons.Hospital />
             </div>
-            <div className="text-center">
-              <h1 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight uppercase leading-none">{HOSPITAL_NAME}</h1>
-              <p className="text-blue-600 font-extrabold tracking-tight uppercase text-xs md:text-sm mt-3 opacity-90">Chất lượng - Tận tâm - Chuyên nghiệp</p>
+            <div className="text-center px-4">
+              <h1 className="text-lg md:text-3xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight">{HOSPITAL_NAME}</h1>
+              <p className="text-blue-600 font-extrabold tracking-tight uppercase text-[10px] md:text-sm mt-2 opacity-90">
+                Chất lượng - Tận tâm - Chuyên nghiệp
+              </p>
             </div>
           </div>
 
-          <div className="mt-4 space-y-4">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tighter leading-[1.1] drop-shadow-sm">
-              Góp ý của bạn  <br/>
-              <span className="text-blue-600">Tài sản của chúng tôi</span>
+          <div className="mt-2 md:mt-4 space-y-3 md:space-y-4 px-4">
+            <h2 className="text-3xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tighter leading-[1.2] md:leading-[1.1] drop-shadow-sm">
+              Góp ý của bạn là <br/>
+              <span className="text-blue-600">tài sản của chúng tôi</span>
             </h2>
-            <p className="text-[10px] md:text-xs text-slate-500 font-black uppercase tracking-[0.3em] opacity-90 max-w-lg mx-auto leading-loose">
-              Mỗi ý kiến phản hồi giúp chúng tôi hoàn thiện dịch vụ y tế cho cộng đồng
+            <p className="text-[9px] md:text-xs text-slate-500 font-black uppercase tracking-[0.2em] md:tracking-[0.3em] opacity-90 max-w-lg mx-auto leading-relaxed md:leading-loose">
+              Lắng nghe để cải tiến — Chia sẻ để hoàn thiện
             </p>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-start -mt-8 pb-32 px-6 relative z-30">
+      <main className="flex-1 flex flex-col items-center justify-start pb-20 md:pb-32 px-4 md:px-6 relative z-30">
         <div className="w-full max-w-5xl">
           <PublicFeedback onSubmit={handlePublicSubmit} />
         </div>
       </main>
 
-      <footer className="bg-slate-900 text-white/40 py-16 px-8 relative z-40 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 border-b border-white/5 pb-16">
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-               <div className="p-2.5 bg-blue-600 rounded-xl text-white"><Icons.Hospital /></div>
-               <h3 className="text-base font-extrabold text-white uppercase tracking-tight">{HOSPITAL_NAME}</h3>
+      <footer className="bg-slate-900 text-white/40 py-10 md:py-16 px-6 md:px-8 relative z-40 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 border-b border-white/5 pb-10 md:pb-16 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
+            <div className="flex items-center gap-3 mb-6 md:mb-8">
+               <div className="p-2 bg-blue-600 rounded-xl text-white"><Icons.Hospital /></div>
+               <h3 className="text-sm md:text-base font-extrabold text-white uppercase tracking-tight leading-tight">{HOSPITAL_NAME}</h3>
             </div>
-            <div className="space-y-3 text-[11px] font-medium opacity-60 leading-relaxed">
-              <p className="text-base font-extrabold text-white uppercase tracking-tight">📍 <span>Số 01 Nguyễn Văn Cừ, Tp. Phan Rang - Tháp Chàm, Ninh Thuận</span></p>
-              <p className="text-base font-extrabold text-white uppercase tracking-tight">📞 <span>(0259) 3831 799 | 📧 bvdknn@ninhthuan.gov.vn</span></p>
+            <div className="space-y-3 text-[10px] md:text-[11px] font-medium opacity-60 leading-relaxed">
+              <p className="flex flex-col md:flex-row items-center gap-1 md:gap-2">
+                <span className="md:shrink-0">📍</span> 
+                <span>Số 01 Nguyễn Văn Cừ, Tp. Phan Rang - Tháp Chàm, Ninh Thuận</span>
+              </p>
+              <p className="flex flex-col md:flex-row items-center gap-1 md:gap-2">
+                <span className="md:shrink-0">📞</span> 
+                <span>(0259) 3822 660 | 📧 bvdknn@ninhthuan.gov.vn</span>
+              </p>
             </div>
           </div>
-          <div className="bg-white/5 p-12 rounded-[40px] border border-white/10 text-center flex flex-col justify-center backdrop-blur-lg">
-            <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Đường dây nóng</h4>
-            <p className="text-5xl font-black text-white tracking-tighter tabular-nums leading-none">0259 3831 799</p>
+          <div className="bg-white/5 p-8 md:p-12 rounded-[32px] md:rounded-[40px] border border-white/10 text-center flex flex-col justify-center backdrop-blur-lg">
+            <h4 className="text-[9px] md:text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-3 md:mb-4">Đường dây nóng phản ánh</h4>
+            <p className="text-3xl md:text-5xl font-black text-white tracking-tighter tabular-nums leading-none">1900 9095</p>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto pt-10 text-[9px] font-bold uppercase tracking-[0.5em] text-center opacity-30">
-          © 2003 Ninh Thuan General Hospital. All rights reserved.
+        <div className="max-w-7xl mx-auto pt-8 md:pt-10 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-center opacity-30">
+          © 2024 Ninh Thuan General Hospital. All rights reserved.
         </div>
       </footer>
     </div>
