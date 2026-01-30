@@ -84,7 +84,7 @@ const App: React.FC = () => {
           className="w-full h-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src "images/bg.png" ;
+            target.src = "images/bg.png" ;
           }}
         />
         {/* Lớp phủ trắng mờ nhẹ hơn (30%) để ảnh nền nổi bật */}
