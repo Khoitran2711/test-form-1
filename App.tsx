@@ -56,7 +56,7 @@ const App: React.FC = () => {
       <>
         {/* Banner Header */}
         <header className="relative w-full pt-6 pb-4 md:pt-10 md:pb-6 px-4 md:px-8 flex flex-col items-center justify-center z-20">
-          <div className="max-w-6xl w-full bg-white/10 backdrop-blur-3xl rounded-[32px] md:rounded-[48px] p-6 md:p-10 border border-white/80 shadow-2xl shadow-blue-900/5">
+          <div className="max-w-6xl w-full bg-white/10 backdrop-blur-sm rounded-[32px] md:rounded-[48px] p-6 md:p-10 border border-white/50 shadow-2xl shadow-blue-900/5">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
               <div className="flex flex-col items-center text-center space-y-3 shrink-0">
                 <div className="w-14 h-14 md:w-16 bg-blue-600 rounded-[20px] flex items-center justify-center text-white shadow-xl">
