@@ -52,24 +52,26 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col relative bg-transparent">
-      {/* Background Toàn Trang - Fix lỗi zoom/fixed trên mobile */}
+    <div className="min-h-screen flex flex-col relative bg-[#fcfdfe]">
+      {/* Background Toàn Trang */}
       <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] z-10"></div>
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-[0.5px] z-10"></div>
         <img 
           src="images/bg.png" 
-          alt=""
-          className="w-full h-full object-cover opacity-50 transition-opacity duration-1000"
+          alt="" 
+          className="w-full h-full object-cover opacity-70 transition-opacity duration-1000"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            if (!target.src.endsWith('.jpg')) {
+            if (target.src.includes('.png')) {
                 target.src = 'images/bg.jpg';
+            } else {
+                target.style.display = 'none';
             }
           }}
         />
       </div>
 
-      {/* Top Bar - Co giãn linh hoạt */}
+      {/* Top Bar */}
       <div className="bg-slate-900/95 text-white/50 text-[8px] md:text-[10px] font-black tracking-[0.2em] md:tracking-[0.3em] px-4 md:px-8 py-3 flex justify-between items-center uppercase z-50 shadow-lg">
         <div className="flex items-center gap-3 md:gap-6">
           <span className="flex items-center gap-1.5">
@@ -85,27 +87,42 @@ const App: React.FC = () => {
         </button>
       </div>
 
-      {/* Banner Header - Đưa phần logo và tên bệnh viện lên cao hơn */}
-      <header className="relative w-full pt-4 pb-6 md:pt-6 md:pb-12 px-4 md:px-6 flex flex-col items-center justify-center z-20">
-        <div className="max-w-7xl w-full flex flex-col items-center gap-4 md:gap-6 text-center">
-          <div className="flex flex-col items-center gap-3 md:gap-4">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-2xl shadow-blue-500/30">
-              <Icons.Hospital />
+      {/* Banner Header - Sắp xếp hàng ngang tối ưu */}
+      <header className="relative w-full pt-8 pb-6 md:pt-16 md:pb-10 px-4 md:px-8 flex flex-col items-center justify-center z-20">
+        <div className="max-w-7xl w-full bg-white/45 backdrop-blur-2xl rounded-[40px] md:rounded-[60px] p-8 md:p-14 border border-white/60 shadow-2xl shadow-blue-900/5">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20">
+            
+            {/* Khối Trái: Nhận diện bệnh viện - CĂN GIỮA TUYỆT ĐỐI */}
+            <div className="flex flex-col items-center text-center space-y-4 shrink-0">
+              <div className="w-14 h-14 md:w-20 md:h-20 bg-blue-600 rounded-[24px] flex items-center justify-center text-white shadow-2xl shadow-blue-500/30">
+                <Icons.Hospital />
+              </div>
+              <div className="space-y-1.5">
+                <h1 className="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-extrabold text-slate-900 tracking-tight uppercase leading-none whitespace-nowrap">
+                  {HOSPITAL_NAME}
+                </h1>
+                <p className="text-blue-600 font-extrabold tracking-[0.2em] uppercase text-[10px] md:text-xs">
+                  Chất lượng - Tận tâm - Chuyên nghiệp
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <h1 className="text-lg md:text-3xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight md:leading-none">{HOSPITAL_NAME}</h1>
-              <p className="text-blue-600 font-extrabold tracking-tight uppercase text-[10px] md:text-sm mt-2 md:mt-3">Chất lượng - Tận tâm - Chuyên nghiệp</p>
-            </div>
-          </div>
 
-          <div className="mt-23 md:mt-43 space-y-3 md:space-y-6">
-            <h2 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tighter leading-[1.2] md:leading-[1.1] drop-shadow-sm">
-              Góp ý của bạn <br/>
-              <span className="text-blue-600">Tài sản của chúng tôi</span>
-            </h2>
-            <p className="text-[8px] md:text-xs text-slate-500 font-black uppercase tracking-[0.2em] md:tracking-[0.3em] opacity-90 max-w-lg mx-auto leading-relaxed md:leading-loose px-4">
-              Mỗi ý kiến phản hồi giúp chúng tôi hoàn thiện dịch vụ y tế cho cộng đồng
-            </p>
+            {/* Thanh kẻ dọc phân tách (Chỉ hiện trên desktop) */}
+            <div className="hidden lg:block w-[1px] h-28 bg-slate-300/40 rounded-full shrink-0"></div>
+            {/* Thanh kẻ ngang cho mobile */}
+            <div className="lg:hidden w-16 h-[2px] bg-slate-200 rounded-full opacity-50"></div>
+
+            {/* Khối Phải: Thông điệp góp ý - XUỐNG DÒNG NHƯ CŨ */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3 md:space-y-4 max-w-lg">
+              <h2 className="text-2xl md:text-4xl xl:text-5xl font-extrabold text-slate-900 tracking-tighter leading-[1.1] drop-shadow-sm">
+                Góp ý của bạn <br className="hidden sm:block"/>
+                <span className="text-blue-600">Tài sản của chúng tôi</span>
+              </h2>
+              <p className="text-[10px] md:text-[12px] text-slate-500 font-bold uppercase tracking-wider opacity-80 leading-relaxed">
+                Mỗi ý kiến phản hồi giúp chúng tôi hoàn thiện dịch vụ y tế cho cộng đồng
+              </p>
+            </div>
+
           </div>
         </div>
       </header>
@@ -123,7 +140,7 @@ const App: React.FC = () => {
           <div className="flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3 mb-6 md:mb-8">
                <div className="p-2 bg-blue-600 rounded-xl text-white"><Icons.Hospital /></div>
-               <h3 className="text-sm md:text-base font-extrabold text-white uppercase tracking-tight">{HOSPITAL_NAME}</h3>
+               <h3 className="text-sm md:text-base font-extrabold text-white uppercase tracking-tight whitespace-nowrap">{HOSPITAL_NAME}</h3>
             </div>
             <div className="space-y-3 text-[10px] md:text-[11px] font-medium opacity-60 leading-relaxed">
               <p className="flex flex-col md:flex-row items-center gap-1 md:gap-2">
