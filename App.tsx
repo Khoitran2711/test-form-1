@@ -55,36 +55,36 @@ const App: React.FC = () => {
     return (
       <>
         {/* Banner Header - Cực kỳ trong suốt */}
-        <header className="relative w-full pt-6 pb-4 md:pt-10 md:pb-6 px-4 md:px-8 flex flex-col items-center justify-center z-20">
-          <div className="max-w-6xl w-full bg-white/10 backdrop-blur-2xl rounded-[32px] md:rounded-[48px] p-6 md:p-10 border border-white/30 shadow-2xl shadow-blue-900/10">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-              <div className="flex flex-col items-center text-center space-y-3 shrink-0">
-                {/* Logo container - Trong suốt để lộ logo.png */}
-                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center drop-shadow-md">
-                  <Icons.Hospital />
-                </div>
-                <div className="space-y-1">
-                  <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight">
-                    {HOSPITAL_NAME}
-                  </h1>
-                  <p className="text-blue-600 font-black tracking-[0.15em] uppercase text-[9px] md:text-[10px]">
-                    Chất lượng - Tận tâm - Chuyên nghiệp
-                  </p>
-                </div>
-              </div>
-              <div className="hidden lg:block w-[1px] h-20 bg-slate-900/10 rounded-full"></div>
-              <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-2 lg:max-w-[55%]">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                  Lắng nghe để thấu hiểu – <br className="hidden md:block lg:hidden" />
-                  <span className="text-blue-600">Góp ý để hoàn thiện</span>
-                </h2>
-                <p className="text-[10px] md:text-xs text-slate-600 font-bold uppercase tracking-wide">
-                  Mỗi ý kiến giúp chúng tôi nâng cao chất lượng dịch vụ y tế cho cộng đồng
-                </p>
-              </div>
-            </div>
-          </div>
-        </header>
+       <header className="relative w-full pt-6 pb-4 md:pt-10 md:pb-6 px-4 md:px-8 flex flex-col items-center justify-center z-20">
+  {/* Chỉnh bg-white/5 và backdrop-blur-md để thấy rõ ảnh nền phía sau */}
+  <div className="max-w-6xl w-full bg-white/5 backdrop-blur-none rounded-[32px] md:rounded-[48px] p-6 md:p-10 border border-white/20 shadow-2xl shadow-blue-900/5">
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+      <div className="flex flex-col items-center text-center space-y-3 shrink-0">
+        {/* Logo vẫn giữ màu xanh đặc trưng y tế */}
+        <div className="w-14 h-14 md:w-16 bg-blue-600 rounded-[20px] flex items-center justify-center text-white shadow-xl">
+          <Icons.Hospital />
+        </div>
+        <div className="space-y-1">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight">
+            {HOSPITAL_NAME}
+          </h1>
+          <p className="text-blue-600 font-bold tracking-[0.15em] uppercase text-[9px] md:text-[10px]">
+            Chất lượng - Tận tâm - Chuyên nghiệp
+          </p>
+        </div>
+      </div>
+      
+      <div className="hidden lg:block w-[1px] h-20 bg-slate-300/40 rounded-full"></div>
+      
+      <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-2 lg:max-w-[55%]">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Lắng nghe để thấu hiểu – <br className="hidden md:block lg:hidden" />
+          <span className="text-blue-600">Góp ý để hoàn thiện</span>
+        </h2>
+      </div>
+    </div>
+  </div>
+</header>
 
         {/* Main Content */}
         <main className="flex-1 flex flex-col items-center justify-start pb-20 px-4 md:px-8 relative z-30">
