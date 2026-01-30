@@ -69,7 +69,7 @@ const App: React.FC = () => {
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> 
             Hệ thống đang hoạt động
           </span>
-          <span className="hidden md:inline">Hotline 24/7: 1900 9095</span>
+          <span className="hidden md:inline">Hotline 24/7: 0259 3831 799</span>
         </div>
         <button onClick={() => setIsAdminMode(true)} className="hover:text-white transition-colors flex items-center gap-2 group">
           <Icons.User /> 
@@ -118,16 +118,16 @@ const App: React.FC = () => {
             </div>
             <div className="space-y-3 text-[11px] font-medium opacity-60 leading-relaxed">
               <p className="text-base font-extrabold text-white uppercase tracking-tight">📍 <span>Số 01 Nguyễn Văn Cừ, Tp. Phan Rang - Tháp Chàm, Ninh Thuận</span></p>
-              <p className="text-base font-extrabold text-white uppercase tracking-tight">📞 <span>(0259) 3822 660 | 📧 bvdknn@ninhthuan.gov.vn</span></p>
+              <p className="text-base font-extrabold text-white uppercase tracking-tight">📞 <span>(0259) 3831 799 | 📧 bvdknn@ninhthuan.gov.vn</span></p>
             </div>
           </div>
           <div className="bg-white/5 p-12 rounded-[40px] border border-white/10 text-center flex flex-col justify-center backdrop-blur-lg">
-            <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Đường dây nóng phản ánh</h4>
-            <p className="text-5xl font-black text-white tracking-tighter tabular-nums leading-none">1900 9095</p>
+            <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Đường dây nóng</h4>
+            <p className="text-5xl font-black text-white tracking-tighter tabular-nums leading-none">0259 3831 799</p>
           </div>
         </div>
         <div className="max-w-7xl mx-auto pt-10 text-[9px] font-bold uppercase tracking-[0.5em] text-center opacity-30">
-          © 2024 Ninh Thuan General Hospital. All rights reserved.
+          © 2003 Ninh Thuan General Hospital. All rights reserved.
         </div>
       </footer>
     </div>
