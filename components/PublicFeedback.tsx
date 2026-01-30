@@ -19,10 +19,11 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
   const [images, setImages] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
 
+  // Added explicit typing for 'file' as 'File' to resolve type inference issues where 'file' was treated as 'unknown'.
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length > 0) {
-      Array.from(files).forEach(file => {
+      Array.from(files).forEach((file: File) => {
         const reader = new FileReader();
         reader.onloadend = () => setImages(prev => [...prev, reader.result as string].slice(0, 2));
         reader.readAsDataURL(file);
