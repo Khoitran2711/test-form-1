@@ -89,17 +89,17 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col relative">
       {/* Background Image - ĐÃ SỬA LỖI VÒNG LẶP GÂY TẢI TRANG */}
       <div className="fixed inset-0 -z-50 overflow-hidden">
-        <img 
-          src="images/bg.png" 
-          alt="" 
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            // Xóa dòng gán lại target.src cũ để hết bị load trang liên tục
-            target.style.display = 'none'; 
-            console.error("Không tìm thấy ảnh nền bg.png");
-          }}
-        />
+       <img 
+  src="images/bg.png" 
+  alt="" 
+  className="w-full h-full object-cover"
+  onError={(e) => {
+    const target = e.target as HTMLImageElement;
+    // Cách an toàn: Ẩn ảnh đi nếu lỗi thay vì cố nạp lại
+    target.style.display = 'none'; 
+    console.error("Lỗi: Không tìm thấy file bg.png");
+  }}
+/>
         {/* Lớp phủ mỏng 20% và không blur để ảnh cực rõ */}
         <div className="absolute inset-0 bg-white/20 backdrop-blur-none"></div>
       </div>
