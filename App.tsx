@@ -57,13 +57,13 @@ const App: React.FC = () => {
       <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-white/60 backdrop-blur-[0.5px] z-10"></div>
         <img 
-          src="images/bg.png" 
+          src="images/bg.png.png" 
           alt="" 
           className="w-full h-full object-cover opacity-70 transition-opacity duration-1000"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             if (target.src.includes('.png')) {
-                target.src = 'images/bg.jpg';
+                target.src = 'images/bg.png.png';
             } else {
                 target.style.display = 'none';
             }
