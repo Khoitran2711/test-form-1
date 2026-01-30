@@ -117,8 +117,8 @@ const App: React.FC = () => {
                <h3 className="text-base font-extrabold text-white uppercase tracking-tight">{HOSPITAL_NAME}</h3>
             </div>
             <div className="space-y-3 text-[11px] font-medium opacity-60 leading-relaxed">
-              <p className="flex items-center gap-2">📍 <span>Số 01 Nguyễn Văn Cừ, Tp. Phan Rang - Tháp Chàm, Ninh Thuận</span></p>
-              <p className="flex items-center gap-2">📞 <span>(0259) 3822 660 | 📧 bvdknn@ninhthuan.gov.vn</span></p>
+              <p className="text-base font-extrabold text-white uppercase tracking-tight">📍 <span>Số 01 Nguyễn Văn Cừ, Tp. Phan Rang - Tháp Chàm, Ninh Thuận</span></p>
+              <p className="text-base font-extrabold text-white uppercase tracking-tight">📞 <span>(0259) 3822 660 | 📧 bvdknn@ninhthuan.gov.vn</span></p>
             </div>
           </div>
           <div className="bg-white/5 p-12 rounded-[40px] border border-white/10 text-center flex flex-col justify-center backdrop-blur-lg">
