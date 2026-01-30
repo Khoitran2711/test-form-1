@@ -102,7 +102,7 @@ const App: React.FC = () => {
         <img 
           src="images/bg.png" 
           alt="" 
-          className="w-full h-full object-cover transition-opacity duration-1000 opacity-10"
+          className="w-full h-full object-cover transition-opacity duration-1000 opacity-100"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             if (target.src.includes('.png.png')) {
