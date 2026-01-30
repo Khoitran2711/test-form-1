@@ -100,7 +100,7 @@ const App: React.FC = () => {
       {/* Background Toàn Trang - Đặt ở lớp dưới cùng */}
       <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
         <img 
-          src="images/bg.png.png" 
+          src="images/bg.png" 
           alt="" 
           className="w-full h-full object-cover transition-opacity duration-1000"
           onError={(e) => {
