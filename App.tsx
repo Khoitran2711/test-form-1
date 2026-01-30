@@ -66,7 +66,7 @@ const App: React.FC = () => {
             className="w-full h-full object-contain"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = 'https://via.placeholder.com/150?text=Logo'; // Ảnh dự phòng nếu lỗi đường dẫn
+              target.src = "images/logo.png"; // Ảnh dự phòng nếu lỗi đường dẫn
             }}
           />
         </div>
