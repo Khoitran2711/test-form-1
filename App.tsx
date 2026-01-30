@@ -61,10 +61,11 @@ const App: React.FC = () => {
               src="images/logo.png" 
               alt="Logo" 
               className="w-full h-full object-contain" 
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                if (target.src !== 'https://via.placeholder.com/150') {
-                  target.src = 'https://via.placeholder.com/150?text=LOGO';
+            onError={(e) => {
+    const target = e.target as HTMLImageElement;
+    // Cách an toàn: Ẩn ảnh đi nếu lỗi thay vì cố nạp lại
+    target.style.display = 'none'; 
+    console.error("Lỗi: Không tìm thấy file bg.png");
                 }
               }}
             />
