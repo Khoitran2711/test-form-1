@@ -74,7 +74,7 @@ const App: React.FC = () => {
         <div className="absolute top-0 left-0 w-full h-full -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/80 to-[#fcfdfe] z-10"></div>
           <div 
-            className="w-full h-full bg-[ url('images/bg.png')] bg-cover bg-center transition-opacity duration-1000 opacity-15"
+            className="w-full h-full bg-[url('images/bg.png')] bg-cover bg-center transition-opacity duration-1000 opacity-15"
           ></div>
         </div>
 
