@@ -58,7 +58,7 @@ const App: React.FC = () => {
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] z-10"></div>
         <img 
           src="images/bg.png" 
-          alt="background"
+          alt=""
           className="w-full h-full object-cover opacity-50 transition-opacity duration-1000"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
