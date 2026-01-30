@@ -99,9 +99,9 @@ const App: React.FC = () => {
           </div>
 
           <div className="mt-2 md:mt-4 space-y-2 md:space-y-4">
-            <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tighter leading-[1.2] md:leading-[1.1] drop-shadow-sm">
-              Góp ý của bạn <br/>
-              <span className="text-blue-600">Tài sản của chúng tôi</span>
+            <h2 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tighter leading-[1.2] md:leading-[1.1] drop-shadow-sm">
+              Góp ý của bạn là <br/>
+              <span className="text-blue-600">tài sản của chúng tôi</span>
             </h2>
             <p className="text-[8px] md:text-xs text-slate-500 font-black uppercase tracking-[0.2em] md:tracking-[0.3em] opacity-90 max-w-lg mx-auto leading-relaxed md:leading-loose px-4">
               Mỗi ý kiến phản hồi giúp chúng tôi hoàn thiện dịch vụ y tế cho cộng đồng
