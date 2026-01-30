@@ -59,9 +59,17 @@ const App: React.FC = () => {
           <div className="max-w-6xl w-full bg-white/10 backdrop-blur-none rounded-[32px] md:rounded-[48px] p-6 md:p-10 border border-white/50 shadow-2xl shadow-blue-900/5">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
               <div className="flex flex-col items-center text-center space-y-3 shrink-0">
-                <div className="w-14 h-14 md:w-16 bg-blue-600 rounded-[20px] flex items-center justify-center text-white shadow-xl">
-                  <Icons.Hospital />
-                </div>
+               <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-[20px] flex items-center justify-center shadow-xl overflow-hidden p-1">
+          <img 
+            src="images/logo.png" 
+            alt="Logo Bệnh viện" 
+            className="w-full h-full object-contain"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://via.placeholder.com/150?text=Logo'; // Ảnh dự phòng nếu lỗi đường dẫn
+            }}
+          />
+        </div>
                 <div className="space-y-1">
                   <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight">
                     {HOSPITAL_NAME}
