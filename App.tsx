@@ -84,7 +84,7 @@ const App: React.FC = () => {
           className="w-full h-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000';
+            target.src "images/bg.png" ;
           }}
         />
         {/* Lớp phủ trắng mờ nhẹ hơn (30%) để ảnh nền nổi bật */}
@@ -92,7 +92,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Top Bar Navigation */}
-      <nav className="bg-blue-900/90 backdrop-blur-md text-white px-6 py-4 flex justify-between items-center shadow-lg z-50 sticky top-0">
+      <nav className="bg-blue-900/90 backdrop-blur-none text-white px-6 py-4 flex justify-between items-center shadow-lg z-50 sticky top-0">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-white rounded-lg p-1">
             <Icons.Hospital />
