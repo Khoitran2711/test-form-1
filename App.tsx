@@ -80,7 +80,7 @@ const App: React.FC = () => {
       <div className="fixed inset-0 -z-50 overflow-hidden">
         <img 
           src="images/bg.png" 
-          alt="Background" 
+          alt="" 
           className="w-full h-full object-cover"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
