@@ -57,7 +57,7 @@ const App: React.FC = () => {
       <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] z-10"></div>
         <img 
-          src="images/bg.png" 
+          src="images/bg.png.jpg" 
           alt="background"
           className="w-full h-full object-cover opacity-50"
         />
