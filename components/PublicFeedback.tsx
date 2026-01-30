@@ -69,11 +69,11 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
             </div>
             <h3 className="text-xl md:text-2xl font-bold leading-tight mb-4 md:mb-6">Chúng tôi luôn lắng nghe quý khách</h3>
             <p className="text-blue-50 text-xs md:text-sm font-medium leading-relaxed opacity-90">
-              Mọi ý kiến đóng góp là tài sản quý giá để Bệnh viện nâng cao chất lượng phục vụ nhân dân.
+              Mọi ý kiến đóng góp là tài sản quý giá để Bệnh viện nâng cao chất lượng phục vụ người bệnh.
             </p>
           </div>
           <div className="hidden md:block mt-12 text-[9px] font-black uppercase tracking-[0.3em] opacity-50 bg-white/10 py-2 px-4 rounded-full w-fit">
-            Bảo mật & Chính danh
+            Chúng tôi Bảo mật thông tin của bạn
           </div>
         </div>
 
@@ -104,7 +104,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">Nội dung phản ánh</label>
+            <label className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">Nội dung góp ý</label>
             <textarea required className="w-full px-5 py-4 md:px-6 md:py-5 bg-slate-100/50 border border-slate-200/50 rounded-2xl md:rounded-3xl focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all font-bold outline-none min-h-[120px] md:min-h-[160px] resize-none placeholder:text-slate-300 text-sm md:text-base" placeholder="Mô tả chi tiết sự việc..." value={formData.content} onChange={e => setFormData({...formData, content: e.target.value})} />
           </div>
 
@@ -128,7 +128,7 @@ export const PublicFeedback: React.FC<PublicFeedbackProps> = ({ onSubmit }) => {
           </div>
 
           <button type="submit" className="w-full bg-slate-900 hover:bg-black text-white font-black py-5 md:py-6 px-6 md:px-8 rounded-2xl md:rounded-[28px] shadow-xl transition-all flex items-center justify-center gap-3 md:gap-4 group active:scale-[0.98]">
-            <span className="tracking-[0.1em] text-xs md:text-sm">GỬI PHẢN ÁNH NGAY</span>
+            <span className="tracking-[0.1em] text-xs md:text-sm">GỬI Ý KIẾN - GÓP Ý CỦA BẠN NGAY</span>
             <Icons.Send />
           </button>
         </form>
