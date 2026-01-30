@@ -52,23 +52,22 @@ const App: React.FC = () => {
       return <AdminDashboard feedbacks={feedbacks} onUpdateFeedback={handleUpdateFeedback} onLogout={handleLogout} />;
     }
     return (
-      <div className="flex flex-col items-center w-full max-w-6xl mx-auto px-4 py-8">
-        {/* Header - Quay lại giao diện cũ với logo trong khối xanh */}
-       <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white p-8 rounded-[30px] shadow-lg border border-blue-100 backdrop-blur-none">
-  <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-600 rounded-[20px] flex items-center justify-center text-white shadow-xl p-2 shrink-0">
-    {/* Thay đổi Icons.Hospital thành img nếu bạn muốn dùng logo thật như các bước trước */}
-    <img src="images/logo.png" alt="Logo" className="w-full h-full object-contain" />
-  </div>
-  <div className="flex flex-col text-center md:text-left">
-    <h1 className="text-xl md:text-3xl font-extrabold text-blue-900 tracking-tight leading-none uppercase">
-      {HOSPITAL_NAME}
-    </h1>
-    <div className="h-1 w-24 bg-blue-600 my-2 rounded-full mx-auto md:mx-0"></div>
-    <p className="text-blue-600 font-bold uppercase tracking-widest text-[10px] md:text-xs">
-      Hệ thống tiếp nhận phản ánh & góp ý trực tuyến
-    </p>
-  </div>
-</div>
+      <div className="flex flex-col items-center w-full max-w-6xl mx-auto px-4 py-8 relative z-10">
+        {/* Header - Tăng độ trong suốt để thấy background */}
+        <div className="w-full flex flex-col md:flex-row items-center gap-6 mb-12 bg-white/40 backdrop-blur-md p-8 rounded-[40px] shadow-2xl border border-white/50">
+          <div className="w-20 h-20 md:w-24 md:h-24 bg-blue-600 rounded-3xl flex items-center justify-center text-white shadow-xl p-3 shrink-0">
+            <Icons.Hospital />
+          </div>
+          <div className="flex flex-col text-center md:text-left">
+            <h1 className="text-2xl md:text-4xl font-black text-blue-900 tracking-tighter leading-none uppercase drop-shadow-sm">
+              {HOSPITAL_NAME}
+            </h1>
+            <div className="h-1.5 w-32 bg-blue-600 my-3 rounded-full mx-auto md:mx-0 shadow-sm"></div>
+            <p className="text-blue-700 font-extrabold uppercase tracking-[0.2em] text-[10px] md:text-xs">
+              Hệ thống tiếp nhận phản ánh & góp ý trực tuyến
+            </p>
+          </div>
+        </div>
 
         <PublicFeedback onSubmit={handlePublicSubmit} />
       </div>
@@ -76,22 +75,24 @@ const App: React.FC = () => {
   };
 
   return (
-  <div className="fixed inset-0 -z-50 overflow-hidden">
-  <img 
-    src="images/bg.png" 
-    alt="" 
-    className="w-full h-full object-cover"
-    onError={(e) => {
-      const target = e.target as HTMLImageElement;
-      target.src = "images/bg.png";
-    }}
-  />
-  {/* Chỉnh bg-white/20 để ảnh đậm màu hơn và xóa blur để ảnh sắc nét */}
-  <div className="absolute inset-0 bg-white/20 backdrop-blur-none"></div>
-</div>
+    <div className="min-h-screen flex flex-col relative">
+      {/* Background Image cố định với độ phủ thấp để hiện rõ ảnh */}
+      <div className="fixed inset-0 -z-50 overflow-hidden">
+        <img 
+          src="images/bg.png" 
+          alt="Background" 
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000';
+          }}
+        />
+        {/* Lớp phủ trắng mờ nhẹ hơn (30%) để ảnh nền nổi bật */}
+        <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]"></div>
+      </div>
 
       {/* Top Bar Navigation */}
-      <nav className="bg-blue-900 text-white px-6 py-4 flex justify-between items-center shadow-md z-50">
+      <nav className="bg-blue-900/90 backdrop-blur-md text-white px-6 py-4 flex justify-between items-center shadow-lg z-50 sticky top-0">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-white rounded-lg p-1">
             <Icons.Hospital />
@@ -101,14 +102,14 @@ const App: React.FC = () => {
         {!isAdminMode ? (
           <button 
             onClick={() => setIsAdminMode(true)} 
-            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all"
+            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all border border-white/20"
           >
             <Icons.User /> Quản trị viên
           </button>
         ) : (
           <button 
             onClick={handleLogout} 
-            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-all"
+            className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-all shadow-lg"
           >
             Đăng xuất
           </button>
@@ -118,25 +119,25 @@ const App: React.FC = () => {
       {renderContent()}
 
       {!isAdminMode && (
-        <footer className="mt-auto bg-slate-900 text-white/80 py-12 px-6 border-t-4 border-blue-600">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-white rounded-xl p-2">
+        <footer className="mt-20 bg-slate-900/95 backdrop-blur-sm text-white/80 py-16 px-6 border-t-8 border-blue-600 relative z-10">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div className="flex items-center gap-6">
+              <div className="w-20 h-20 bg-white rounded-2xl p-3 shadow-2xl">
                 <Icons.Hospital />
               </div>
               <div>
-                <h3 className="font-bold text-lg text-white">{HOSPITAL_NAME}</h3>
-                <p className="text-xs">Số 01 Nguyễn Văn Cừ, Tp. Phan Rang - Tháp Chàm, Ninh Thuận</p>
-                <p className="text-xs">Hotline: (0259) 3822 660</p>
+                <h3 className="font-black text-xl text-white tracking-tight">{HOSPITAL_NAME}</h3>
+                <p className="text-sm opacity-70">Số 01 Nguyễn Văn Cừ, Tp. Phan Rang - Tháp Chàm, Ninh Thuận</p>
+                <p className="text-sm font-bold text-blue-400 mt-1">Đường dây nóng hỗ trợ: (0259) 3822 660</p>
               </div>
             </div>
-            <div className="text-center md:text-right">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-blue-400">Đường dây nóng</p>
-              <p className="text-3xl font-black text-white">1900 9095</p>
+            <div className="text-center md:text-right bg-white/5 p-6 rounded-[30px] border border-white/10">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-2 text-blue-400">Hotline Bộ Y Tế</p>
+              <p className="text-4xl font-black text-white tracking-tighter">1900 9095</p>
             </div>
           </div>
-          <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-white/5 text-center text-[10px] uppercase tracking-[0.3em] opacity-40">
-            © 2024 Ninh Thuan General Hospital. All rights reserved.
+          <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/5 text-center text-[10px] uppercase tracking-[0.4em] font-bold opacity-30">
+            © 2024 Ninh Thuan General Hospital. Cam kết chất lượng phục vụ hàng đầu.
           </div>
         </footer>
       )}
