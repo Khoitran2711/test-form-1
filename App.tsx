@@ -61,7 +61,7 @@ const App: React.FC = () => {
     <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
       <div className="flex flex-col items-center text-center space-y-3 shrink-0">
         {/* Logo vẫn giữ màu xanh đặc trưng y tế */}
-        <div className="w-14 h-14 md:w-16 bg-blue-600 rounded-[20px] flex items-center justify-center text-white shadow-xl">
+        <div className="w-14 h-14 md:w-16 bg-white-600 rounded-[20px] flex items-center justify-center text-white shadow-xl">
           <Icons.Hospital />
         </div>
         <div className="space-y-1">
