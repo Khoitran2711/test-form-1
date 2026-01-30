@@ -86,14 +86,14 @@ const App: React.FC = () => {
             </div>
             <div className="text-center">
               <h1 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight uppercase leading-none">{HOSPITAL_NAME}</h1>
-              <p className="text-[9px] text-blue-700 font-bold uppercase tracking-[0.5em] mt-3 italic bg-white/50 px-4 py-1 rounded-full backdrop-blur-sm inline-block">Chất lượng - Tận tâm - Chuyên nghiệp</p>
+              <p className="text-[9px] text-blue-700 font-extrabold uppercase tracking-[0.5em] mt-3 italic bg-white/50 px-4 py-1 rounded-full backdrop-blur-sm inline-block">Chất lượng - Tận tâm - Chuyên nghiệp</p>
             </div>
           </div>
 
           <div className="mt-4 space-y-4">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tighter leading-[1.1] drop-shadow-sm">
-              Góp ý của bạn là <br/>
-              <span className="text-blue-600">tài sản của chúng tôi</span>
+              Góp ý của bạn  <br/>
+              <span className="text-blue-600">Tài sản của chúng tôi</span>
             </h2>
             <p className="text-[10px] md:text-xs text-slate-500 font-black uppercase tracking-[0.3em] opacity-90 max-w-lg mx-auto leading-loose">
               Mỗi ý kiến phản hồi giúp chúng tôi hoàn thiện dịch vụ y tế cho cộng đồng
