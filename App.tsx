@@ -64,7 +64,7 @@ const App: React.FC = () => {
             const target = e.target as HTMLImageElement;
             // Fallback nếu ảnh sai tên
             if (!target.src.includes('bg.png.png')) {
-                target.src = 'images/bg.png';
+                target.src = 'images/bg.png.png';
             }
           }}
         />
