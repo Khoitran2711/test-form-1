@@ -75,20 +75,19 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative">
-      {/* Background Image cố định */}
-      <div className="fixed inset-0 -z-50 overflow-hidden">
-        <img 
-          src="images/bg.png" 
-          alt="" 
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = "images/bg.png" ;
-          }}
-        />
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-[1px]"></div>
-      </div>
+  <div className="fixed inset-0 -z-50 overflow-hidden">
+  <img 
+    src="images/bg.png" 
+    alt="" 
+    className="w-full h-full object-cover"
+    onError={(e) => {
+      const target = e.target as HTMLImageElement;
+      target.src = "images/bg.png";
+    }}
+  />
+  {/* Chỉnh bg-white/20 để ảnh đậm màu hơn và xóa blur để ảnh sắc nét */}
+  <div className="absolute inset-0 bg-white/20 backdrop-blur-none"></div>
+</div>
 
       {/* Top Bar Navigation */}
       <nav className="bg-blue-900 text-white px-6 py-4 flex justify-between items-center shadow-md z-50">
