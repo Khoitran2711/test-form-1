@@ -94,7 +94,7 @@ const App: React.FC = () => {
           <div className="relative z-10 space-y-6">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tighter leading-[1.1]">
               Góp ý của bạn là <br/>
-              <span className="text-blue-600 bg-clip-text">tài sản của chúng tôi</span>
+              <span className="text-blue-600 bg-clip-text">Tài sản của chúng tôi</span>
             </h2>
             
             <p className="text-sm md:text-base text-slate-500 font-semibold leading-relaxed max-w-xl mx-auto opacity-80">
